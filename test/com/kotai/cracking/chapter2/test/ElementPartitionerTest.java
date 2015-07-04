@@ -70,4 +70,23 @@ public class ElementPartitionerTest {
     TestNode<Integer> head = new TestNode<Integer>(10);
     assertThat(partitioner.partition(head, 8).toList(), equalTo(head.toList()));
   }
+
+  @Test
+  public void list_case_for_partition2() {
+    TestNode<Integer> head = new TestNode<>(14);
+    head.appendToTail(13);
+    head.appendToTail(12);
+    head.appendToTail(11);
+    head.appendToTail(10);
+
+    List<Integer> expectedList = new ArrayList<Integer>();
+    expectedList.add(10);
+    expectedList.add(11);
+    expectedList.add(14);
+    expectedList.add(13);
+    expectedList.add(12);
+
+    assertThat(partitioner.partition2(head, 12).toList(), equalTo(expectedList));
+
+  }
 }

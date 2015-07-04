@@ -39,4 +39,25 @@ public class ElementPartitioner {
     }
     return rightHead;
   }
+
+  public <T extends Comparable<T>> TestNode<T> partition2(TestNode<T> node, T value) {
+    TestNode<T> head = node;
+    TestNode<T> tail = node;
+
+    while (node != null) {
+      TestNode<T> next = node.next;
+      if (value.compareTo(node.data) > 0) {
+        node.next = head;
+        head = node;
+      } else {
+        tail.next = node;
+        tail = node;
+      }
+
+      node = next;
+    }
+    tail.next = null;
+
+    return head;
+  }
 }
