@@ -3,9 +3,6 @@ package com.kotai.cracking.chapter2.test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
 import com.kotai.cracking.chapter2.ElementPartitioner;
@@ -17,28 +14,19 @@ public class ElementPartitionerTest {
 
   @Test
   public void list_case_value_in_list() {
-    TestNode<Integer> head = new TestNode<>(14);
-    head.appendToTail(13);
-    head.appendToTail(12);
-    head.appendToTail(11);
-    head.appendToTail(10);
+    TestNode<Integer> head =
+        new TestNode<>(14).appendToTail(13).appendToTail(12).appendToTail(11).appendToTail(10);
 
-    List<Integer> expectedList = new ArrayList<Integer>();
-    expectedList.add(11);
-    expectedList.add(10);
-    expectedList.add(14);
-    expectedList.add(13);
-    expectedList.add(12);
+    TestNode<Integer> resultNode =
+        new TestNode<>(11).appendToTail(10).appendToTail(14).appendToTail(13).appendToTail(12);
 
-    assertThat(partitioner.partition(head, 12).toList(), equalTo(expectedList));
+    assertThat(partitioner.partition(head, 12).toList(), equalTo(resultNode.toList()));
   }
 
   @Test
   public void list_case_value_less_than_list() {
-    TestNode<Integer> head = new TestNode<Integer>(10);
-    head.appendToTail(11);
-    head.appendToTail(12);
-    head.appendToTail(13);
+    TestNode<Integer> head =
+        new TestNode<Integer>(10).appendToTail(11).appendToTail(12).appendToTail(13);
 
     assertThat(partitioner.partition(head, 9).toList(), equalTo(head.toList()));
   }
@@ -73,20 +61,13 @@ public class ElementPartitionerTest {
 
   @Test
   public void list_case_for_partition2() {
-    TestNode<Integer> head = new TestNode<>(14);
-    head.appendToTail(13);
-    head.appendToTail(12);
-    head.appendToTail(11);
-    head.appendToTail(10);
+    TestNode<Integer> head =
+        new TestNode<>(14).appendToTail(13).appendToTail(12).appendToTail(11).appendToTail(10);
 
-    List<Integer> expectedList = new ArrayList<Integer>();
-    expectedList.add(10);
-    expectedList.add(11);
-    expectedList.add(14);
-    expectedList.add(13);
-    expectedList.add(12);
+    TestNode<Integer> resultNode = new TestNode<Integer>(10).appendToTail(11).appendToTail(14)
+        .appendToTail(13).appendToTail(12);
 
-    assertThat(partitioner.partition2(head, 12).toList(), equalTo(expectedList));
+    assertThat(partitioner.partition2(head, 12).toList(), equalTo(resultNode.toList()));
 
   }
 }

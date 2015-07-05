@@ -11,13 +11,15 @@ public class TestNode<T> {
     this.data = data;
   }
 
-  public void appendToTail(T data) {
+  public TestNode<T> appendToTail(T data) {
     TestNode<T> end = new TestNode<T>(data);
     TestNode<T> current = this;
     while (current.next != null) {
       current = current.next;
     }
     current.next = end;
+
+    return this;
   }
 
   public List<T> toList() {

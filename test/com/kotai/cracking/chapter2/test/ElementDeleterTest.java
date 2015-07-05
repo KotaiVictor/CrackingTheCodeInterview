@@ -3,9 +3,6 @@ package com.kotai.cracking.chapter2.test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,24 +16,17 @@ public class ElementDeleterTest {
 
   @Before
   public void setup() {
-    head = new TestNode<>(10);
-    head.appendToTail(11);
-    head.appendToTail(12);
-    head.appendToTail(13);
-    head.appendToTail(14);
+    head = new TestNode<>(10).appendToTail(11).appendToTail(12).appendToTail(13).appendToTail(14);
   }
 
   @Test
   public void delete_element_at_begining_of_list() {
     deleter.delete(head);
 
-    List<Integer> resultList = new ArrayList<Integer>();
-    resultList.add(11);
-    resultList.add(12);
-    resultList.add(13);
-    resultList.add(14);
+    TestNode<Integer> resultNode =
+        new TestNode<>(11).appendToTail(12).appendToTail(13).appendToTail(14);
 
-    assertThat(head.toList(), equalTo(resultList));
+    assertThat(head.toList(), equalTo(resultNode.toList()));
   }
 
   @Test
@@ -44,12 +34,9 @@ public class ElementDeleterTest {
     TestNode<Integer> toDelete = head.next.next.next; // haha, horrid
     deleter.delete(toDelete);
 
-    List<Integer> resultList = new ArrayList<Integer>();
-    resultList.add(10);
-    resultList.add(11);
-    resultList.add(12);
-    resultList.add(14);
+    TestNode<Integer> resultNode =
+        new TestNode<Integer>(10).appendToTail(11).appendToTail(12).appendToTail(14);
 
-    assertThat(head.toList(), equalTo(resultList));
+    assertThat(head.toList(), equalTo(resultNode.toList()));
   }
 }
