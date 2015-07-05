@@ -47,4 +47,40 @@ public class LinkedListAdderTest {
     assertThat(adder.addReverse(firstNumber, secondNumber).toList(),
         equalTo(resultNumber.toList()));
   }
+
+  @Test
+  public void adding_2_reverse_numbers_of_different_length_with_carry_overs() {
+    TestNode<Integer> firstNumber = new TestNode<Integer>(9).appendToTail(9).appendToTail(8);
+    TestNode<Integer> secondNumber = new TestNode<Integer>(1);
+
+    TestNode<Integer> resultNumber = new TestNode<Integer>(0).appendToTail(0).appendToTail(9);
+
+    assertThat(adder.addReverse(firstNumber, secondNumber).toList(),
+        equalTo(resultNumber.toList()));
+  }
+
+
+  @Test
+  public void adding_2_reverse_numbers_of_different_length_with_carry_overs_recursive() {
+    TestNode<Integer> firstNumber = new TestNode<Integer>(9).appendToTail(9).appendToTail(8);
+    TestNode<Integer> secondNumber = new TestNode<Integer>(1);
+
+    TestNode<Integer> resultNumber = new TestNode<Integer>(0).appendToTail(0).appendToTail(9);
+
+    assertThat(adder.recursiveAdd(firstNumber, secondNumber, 0).toList(),
+        equalTo(resultNumber.toList()));
+  }
+
+  @Test
+  public void adding_2_reverse_numbers_of_same_length_with_carry_overs_recursive() {
+    TestNode<Integer> firstNumber = new TestNode<Integer>(7).appendToTail(3).appendToTail(1); // 137
+    TestNode<Integer> secondNumber = new TestNode<Integer>(4).appendToTail(8).appendToTail(9); // 984
+
+    TestNode<Integer> resultNumber =
+        new TestNode<Integer>(1).appendToTail(2).appendToTail(1).appendToTail(1); // 1121
+
+    assertThat(adder.recursiveAdd(firstNumber, secondNumber, 0).toList(),
+        equalTo(resultNumber.toList()));
+  }
+
 }

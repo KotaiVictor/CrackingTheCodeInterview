@@ -25,9 +25,11 @@ public class LinkedListAdder {
     int carryOver = normalizeNode(resultNumberHead);
     TestNode<Integer> resultNumberBody = resultNumberHead;
 
-    while (firstNumber.next != null || secondNumber.next != null) {
-      firstNumber = firstNumber.next;
-      secondNumber = secondNumber.next;
+    while (shouldContinue(firstNumber, secondNumber)) {
+      if (firstNumber != null)
+        firstNumber = firstNumber.next;
+      if (secondNumber != null)
+        secondNumber = secondNumber.next;
       resultNumberBody.next = addNodes(firstNumber, secondNumber, carryOver);
       resultNumberBody = resultNumberBody.next;
       carryOver = normalizeNode(resultNumberBody);
@@ -37,6 +39,11 @@ public class LinkedListAdder {
       resultNumberBody.next = new TestNode<Integer>(carryOver);
 
     return resultNumberHead;
+  }
+
+  private boolean shouldContinue(TestNode<Integer> firstNumber, TestNode<Integer> secondNumber) {
+    return (firstNumber != null && firstNumber.next != null)
+        || (secondNumber != null && secondNumber.next != null);
   }
 
   private Integer normalizeNode(TestNode<Integer> resultNumber) {
@@ -55,5 +62,55 @@ public class LinkedListAdder {
       accumulator += secondNode.data;
 
     return new TestNode<Integer>(accumulator);
+  }
+
+  public TestNode<Integer> recursiveAdd(TestNode<Integer> firstNode, TestNode<Integer> secondNode,
+      int carryOver) {
+    if (firstNode == null && secondNode == null && carryOver == 0) {
+      return null;
+    }
+
+    if (firstNode != null)
+      carryOver += firstNode.data;
+
+    if (secondNode != null)
+      carryOver += secondNode.data;
+
+    TestNode<Integer> resultNode = new TestNode<>(carryOver % 10);
+
+    if (firstNode != null || secondNode != null) {
+      TestNode<Integer> nextNode = recursiveAdd(firstNode != null ? firstNode.next : null,
+          secondNode != null ? secondNode.next : null, carryOver / 10);
+      resultNode.next = nextNode;
+    }
+
+    return resultNode;
+  }
+
+  /**
+   * Unfinished
+   */
+  public TestNode<Integer> recursiveAddRegular(TestNode<Integer> firstNode,
+      TestNode<Integer> secondNode, int carryOver) {
+
+    int firstSize = firstNode.size();
+    int secondSize = secondNode.size();
+
+    if (firstSize > secondSize) {
+      secondNode = padFrontWith(secondNode, firstSize - secondSize);
+    } else {
+      firstNode = padFrontWith(firstNode, secondSize - firstSize);
+    }
+
+    return null;
+  }
+
+  private TestNode<Integer> padFrontWith(TestNode<Integer> node, Integer size) {
+    TestNode<Integer> head = new TestNode<Integer>(0);
+    for (int i = 0; i < size - 1; i++) {
+      head.appendToTail(0);
+    }
+    head.getLast().next = node;
+    return head;
   }
 }

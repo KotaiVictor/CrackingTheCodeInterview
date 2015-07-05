@@ -34,4 +34,24 @@ public class TestNode<T> {
 
     return returnList;
   }
+
+  public int size() {
+    TestNode<T> head = this;
+    int size = 0;
+    while (head != null) {
+      head = head.next;
+      size++;
+    }
+
+    return size;
+  }
+
+  public TestNode<T> getLast() {
+    TestNode<T> last = this;
+    while (last.next != null)
+      last = last.next;
+
+    return last;
+  }
+
 }
