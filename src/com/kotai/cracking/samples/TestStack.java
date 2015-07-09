@@ -1,7 +1,7 @@
 package com.kotai.cracking.samples;
 
 public class TestStack<T> {
-  TestNode<T> top;
+  private TestNode<T> top;
 
   public T pop() {
     T toReturn = null;
@@ -19,8 +19,16 @@ public class TestStack<T> {
   }
 
   public T peek() {
+    T peekedValue = null;
     if (top != null)
-      return top.data;
-    return null;
+      peekedValue = top.data;
+    return peekedValue;
+  }
+
+  public int size() {
+    int size = 0;
+    if (top != null)
+      size = top.size();
+    return size;
   }
 }
