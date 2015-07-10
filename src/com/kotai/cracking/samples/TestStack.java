@@ -1,7 +1,7 @@
 package com.kotai.cracking.samples;
 
 public class TestStack<T> {
-  private TestNode<T> top;
+  protected TestNode<T> top;
 
   public T pop() {
     T toReturn = null;
