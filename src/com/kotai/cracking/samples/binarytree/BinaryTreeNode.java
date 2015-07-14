@@ -10,6 +10,10 @@ public class BinaryTreeNode<T> {
     this.data = data;
   }
 
+  public T getData() {
+    return data;
+  }
+
   public BinaryTreeNode<T> getLeft() {
     return left;
   }
