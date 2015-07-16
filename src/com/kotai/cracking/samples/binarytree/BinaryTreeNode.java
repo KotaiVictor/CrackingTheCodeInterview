@@ -22,6 +22,10 @@ public class BinaryTreeNode<T> {
     return right;
   }
 
+  public BinaryTreeNode<T> getParent() {
+	  return parent;
+  }
+
   public void setLeft(BinaryTreeNode<T> child) {
     // ensure child is not an ancestor
     for (BinaryTreeNode<T> ancestor = this; ancestor != null; ancestor = ancestor.parent) {
