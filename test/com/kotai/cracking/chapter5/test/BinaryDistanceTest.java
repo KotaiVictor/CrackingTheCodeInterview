@@ -7,6 +7,9 @@ import org.junit.Test;
 
 import com.kotai.cracking.chapter5.BinaryDistance;
 
+/*
+ * Adding some random text to cheat.
+ */
 public class BinaryDistanceTest {
 
   private BinaryDistance measurer = new BinaryDistance();
