@@ -15,13 +15,13 @@ public enum Rank {
 
   public static Rank getRankForLevel(int level) {
     switch (level) {
+      case 1:
+        return Rank.RESPONDER;
       case 2:
         return Rank.MANAGER;
       case 3:
-        return Rank.DIRECTOR;
-      case 1:
       default:
-        return Rank.RESPONDER;
+        return Rank.DIRECTOR;
     }
   }
 }

@@ -23,4 +23,12 @@ public abstract class Employee {
     completedCall.setCompleted();
     return completedCall;
   }
+
+  public boolean isFree() {
+    return currentCall == null;
+  }
+
+  public Rank getRank() {
+    return rank;
+  }
 }

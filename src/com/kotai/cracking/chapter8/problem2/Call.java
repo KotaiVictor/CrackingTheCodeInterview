@@ -37,5 +37,10 @@ public class Call {
 
   public void setCompleted() {
     this.isCompleted = true;
+    this.handler = null;
+  }
+
+  public Employee getHandler() {
+    return handler;
   }
 }
