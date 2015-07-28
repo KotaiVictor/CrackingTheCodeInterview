@@ -1,8 +1,11 @@
 package com.kotai.cracking.chapter8.problem2;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 import com.google.common.base.Optional;
 import com.kotai.cracking.chapter8.problem2.employee.Employee;
@@ -16,8 +19,15 @@ public class EscalatingCallHandler implements CallHandler {
     return instance;
   }
 
-  Map<Rank, List<Employee>> employees = new HashMap<Rank, List<Employee>>();
+  private Map<Rank, List<Employee>> employees;
+  private Queue<Call> escallationQueue = new LinkedList<>();
 
+  public EscalatingCallHandler() {
+    employees = new HashMap<>();
+    employees.put(Rank.RESPONDER, new ArrayList<>());
+    employees.put(Rank.MANAGER, new ArrayList<>());
+    employees.put(Rank.DIRECTOR, new ArrayList<>());
+  }
 
   public Optional<Employee> getHandlerForCall(Call call) {
     Rank callRank = call.getRank();
@@ -29,6 +39,10 @@ public class EscalatingCallHandler implements CallHandler {
     return Optional.fromNullable(responder);
   }
 
+  public void addEmployee(Employee employee) {
+    employees.get(employee.getRank()).add(employee);
+  }
+
   @Override
   public void handleCall(Call incomingCall) {
     Optional<Employee> possibleEmployee = getHandlerForCall(incomingCall);
@@ -36,7 +50,8 @@ public class EscalatingCallHandler implements CallHandler {
       possibleEmployee.get().receiveCall(incomingCall);
       incomingCall.setHandler(possibleEmployee.get());
     } else {
-      // escalate call
+      incomingCall.escalate();
+      escallationQueue.offer(incomingCall);
     }
   }
 }

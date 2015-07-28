@@ -27,7 +27,7 @@ public class Call {
     return minRank;
   }
 
-  public void excalate() {
+  public void escalate() {
     this.minRank = Rank.getRankForLevel(minRank.getRank() + 1);
   }
 
