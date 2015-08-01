@@ -16,4 +16,8 @@ public class Playlist {
   public void enqueueSong(Song s) {
     songs.add(s);
   }
+
+  public Song getNextSong() {
+    return songs.poll();
+  }
 }
