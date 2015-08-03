@@ -1,8 +1,8 @@
 package com.kotai.cracking.chapter3;
 
-/*
+/**
  * How would you design a stack which, in addition to push and pop, also has a function min which
- * returns the minimum element? Push, pop and min should all operate in O(1) tim
+ * returns the minimum element? Push, pop and min should all operate in O(1) time
  */
 public class StackThatKnowsMin<T extends Comparable<T>> {
   private MinNode top;
@@ -32,7 +32,6 @@ public class StackThatKnowsMin<T extends Comparable<T>> {
       top = top.next;
     }
     return toReturn;
-
   }
 
   private class MinNode {

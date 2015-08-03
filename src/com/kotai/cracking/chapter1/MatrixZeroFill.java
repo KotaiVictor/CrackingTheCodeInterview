@@ -61,7 +61,6 @@ public class MatrixZeroFill {
     for (int row = 0; row < matrix.length; row++)
       if (matrix[row].length > column)
         matrix[row][column] = 0;
-
     return matrix;
   }
 }

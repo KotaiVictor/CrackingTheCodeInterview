@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 import com.google.common.collect.Lists;
 import com.kotai.cracking.samples.TestNode;
 
+/**
+ * Write code to remove duplicates from an unsorted linked list. FOLLOW UP How would you solve this
+ * problem if a temporary buffer is not allowed?
+ */
 public class LinkedListDuplicateRemover {
 
   public <T> LinkedList<T> deDuplicateStream(LinkedList<T> inputList) {
@@ -36,7 +40,6 @@ public class LinkedListDuplicateRemover {
 
   public <T> TestNode<T> deDuplicateWithoutAccumulator(TestNode<T> head) {
     TestNode<T> current = head;
-
     while (current != null) {
       TestNode<T> runner = current;
       while (runner.next != null) {

@@ -2,9 +2,8 @@ package com.kotai.cracking.chapter2;
 
 import com.kotai.cracking.samples.TestNode;
 
-/*
- * Find the kth element from the end of a singly linked list.
- *
+/**
+ * Implement an algorithm to find the kth to last element of a singly linked list.
  */
 public class KthElementFromEndFinder {
 
