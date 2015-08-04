@@ -10,7 +10,7 @@ import com.kotai.cracking.samples.TestStack;
  * several stacks and should create a new stack once the previous one exceeds capacity. SetOf
  * Stacks. push() and SetOf Stacks. pop() should behave identically to a single stack (that is, popO
  * should return the same values as it would if there were just a single stack). FOLLOW UP Implement
- * a function popAt(int index) which performs a pop operation on a specific sub-stack
+ * a function popAt(int index) which performs a pop operation on a specific sub-stack *sigh*
  */
 public class StackOfStacks<T> {
 
