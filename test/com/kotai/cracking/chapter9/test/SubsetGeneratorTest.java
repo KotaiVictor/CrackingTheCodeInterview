@@ -33,9 +33,9 @@ public class SubsetGeneratorTest {
     List<List<Integer>> result = generator.createAllSubsets(listOf2);
     assertThat(result.size(), equalTo(4));
     assertThat(result.get(0), equalTo(Lists.newArrayList()));
-    assertThat(result.get(1), equalTo(Stream.of(2).collect(Collectors.toList())));
-    assertThat(result.get(2), equalTo(Stream.of(1).collect(Collectors.toList())));
-    assertThat(result.get(3), equalTo(Stream.of(2, 1).collect(Collectors.toList())));
+    assertThat(result.get(1), equalTo(Stream.of(1).collect(Collectors.toList())));
+    assertThat(result.get(2), equalTo(Stream.of(2).collect(Collectors.toList())));
+    assertThat(result.get(3), equalTo(Stream.of(1, 2).collect(Collectors.toList())));
   }
 
   @Test
