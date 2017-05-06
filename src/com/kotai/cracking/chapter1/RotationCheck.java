@@ -6,8 +6,11 @@ import org.apache.commons.lang3.StringUtils;
  * Given two strings, check that one is the rotation of the other using only one call to substring.
  */
 public class RotationCheck {
-
-  public boolean isRotation(String original, String rotation) {
-    return StringUtils.contains((rotation + rotation), original);
-  }
+    public boolean isRotation(String original, String rotation) {
+        if (StringUtils.length(original) == StringUtils.length(rotation)) {
+            return StringUtils.contains((rotation + rotation), original);
+        } else {
+            return false;
+        }
+    }
 }
