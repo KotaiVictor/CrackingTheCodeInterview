@@ -19,10 +19,7 @@ public class StackThatKnowsMin<T extends Comparable<T>> {
   }
 
   public T min() {
-    T min = null;
-    if (top != null)
-      min = top.min;
-    return min;
+    return top == null ? null : top.min;
   }
 
   public T pop() {

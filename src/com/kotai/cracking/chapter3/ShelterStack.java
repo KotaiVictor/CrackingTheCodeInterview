@@ -23,10 +23,7 @@ public class ShelterStack {
   }
 
   public Animal dequeue() {
-    Animal toAdopt = null;
-    if (!adoptionList.isEmpty())
-      toAdopt = adoptionList.removeFirst();
-    return toAdopt;
+    return adoptionList.isEmpty() ? null : adoptionList.removeFirst();
   }
 
   public Animal dequeueCat() {
@@ -59,7 +56,7 @@ public class ShelterStack {
   }
 
   public static enum AnimalType {
-    DOG, CAT;
+    DOG, CAT
   }
 
 

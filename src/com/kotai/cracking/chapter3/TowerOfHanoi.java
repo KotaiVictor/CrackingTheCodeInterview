@@ -9,7 +9,6 @@ import com.kotai.cracking.samples.TestStack;
 import lombok.Data;
 
 public class TowerOfHanoi {
-
   private final int height;
   private HanoiStack[] stacks;
 

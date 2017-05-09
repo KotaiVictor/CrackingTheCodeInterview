@@ -10,12 +10,12 @@ import com.kotai.cracking.samples.binarytree.BinaryTreeNode;
 
 public class BalanceBinaryTreeChecker {
 
-  public boolean isBalanced(BinaryTreeNode<Integer> root) {
+  public <T> boolean isBalanced(BinaryTreeNode<T> root) {
     if (root == null || (root.getLeft() == null && root.getRight() == null))
       return true;
     boolean bothSubtreesBalanced = isBalanced(root.getLeft()) && isBalanced(root.getRight());
-    boolean heightDifference = Math.abs(height(root.getLeft()) - height(root.getRight())) <= 1;
-    return bothSubtreesBalanced && heightDifference;
+    boolean heightDifferenceCorrect = Math.abs(height(root.getLeft()) - height(root.getRight())) <= 1;
+    return bothSubtreesBalanced && heightDifferenceCorrect;
   }
 
   private <T> int height(BinaryTreeNode<T> root) {

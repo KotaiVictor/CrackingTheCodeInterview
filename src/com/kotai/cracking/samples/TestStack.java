@@ -19,16 +19,10 @@ public class TestStack<T> {
   }
 
   public T peek() {
-    T peekedValue = null;
-    if (top != null)
-      peekedValue = top.data;
-    return peekedValue;
+    return top == null ? null : top.data;
   }
 
   public int size() {
-    int size = 0;
-    if (top != null)
-      size = top.size();
-    return size;
+    return top == null ? 0 : top.size();
   }
 }
