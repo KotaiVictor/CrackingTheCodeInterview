@@ -18,7 +18,7 @@ public class BinaryTreeChecker {
   }
 
   /**
-   * So ineficient
+   * So inefficient
    */
   private <T extends Comparable<T>> List<BinaryTreeNode<T>> inOrderTraversal(
       BinaryTreeNode<T> root) {

@@ -1,6 +1,7 @@
 package com.kotai.cracking.chapter4;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -17,7 +18,7 @@ public class LinkedListAtLevels {
   public <T> List<List<T>> getLevelsFromLinkedList(BinaryTreeNode<T> root) {
     List<List<T>> resultList = new ArrayList<>();
     if (root != null) {
-      List<BinaryTreeNode<T>> currentLevel = Stream.of(root).collect(Collectors.toList());
+      List<BinaryTreeNode<T>> currentLevel = Collections.singletonList(root);
       while (!currentLevel.isEmpty()) {
         List<BinaryTreeNode<T>> nextLevel = new ArrayList<>();
         for (BinaryTreeNode<T> node : currentLevel) {
