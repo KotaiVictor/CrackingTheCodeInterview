@@ -1,4 +1,4 @@
-package com.kotai.cracking.other;
+package com.kotai.other;
 
 /**
  * Created by victorkotai on 11/05/2017.
